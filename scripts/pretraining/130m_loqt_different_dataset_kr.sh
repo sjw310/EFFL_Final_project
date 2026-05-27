@@ -1,6 +1,6 @@
 # Description: Script to run LoQT with 8-bit quantization on 350m model
 # nproc_per_node 1 is number of GPUs per node and nnodes 1 is number of nodes
-torchrun --standalone --nproc_per_node 1 --nnodes 1 torchrun_main_Llama_different_dataset.py \
+torchrun --standalone --nproc_per_node 1 --nnodes 1 torchrun_main_Llama_different_dataset_kr.py \
     --model_config configs/llama_130m.json \
     --dataset_name HAERAE-HUB/KOREAN-WEBTEXT \
     --dataset_text_field text \

@@ -3,8 +3,8 @@
 # 현재 작업 디렉토리를 프로젝트 루트로 설정
 # (파일명: torchrun_main.py가 있는 폴더에서 실행한다고 가정)
 
-torchrun --standalone --nproc_per_node 1 --nnodes 1 torchrun_main_gpt_different_dataset.py \
-    --model_config configs/gpt2_355m.json \
+torchrun --standalone --nproc_per_node 1 --nnodes 1 torchrun_main_gpt2_different_dataset_kr.py \
+    --model_config configs/gpt2_124m.json \
     --dataset_name HAERAE-HUB/KOREAN-WEBTEXT \
     --dataset_text_field text \
     --validation_split_percentage 5 \
