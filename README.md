@@ -9,7 +9,7 @@ https://arxiv.org/abs/2405.16528
 **Original repository:** https://github.com/sebulo/LoQT
 
 **Modifications:**
-- Applied different dataset : KOREAN-WEBTEXT (HAERAE-HUB), mc4 (Japanese subset)
+- Applied different dataset : KOREAN-WEBTEXT (HAERAE-HUB), mC4 (Japanese subset)
 - Applied different model : GPT-2 (124m)
 - Applied different hardware : Nvidia Geforce RTX 5070 (12GB VRAM)
 
@@ -25,7 +25,7 @@ conda env create -f environment.yml
 This will create a conda environment with all the necessary packages. Make sure to activate the environment:
 
 ```bash
-conda activate extention_loqt
+conda activate extension_loqt
 ```
 
 ## Usage Examples
