@@ -1,12 +1,12 @@
 # --nproc_per_node 1 is number of GPUs per node
-torchrun --standalone --nproc_per_node 2 --nnodes 1 torchrun_main.py \
+torchrun --standalone --nproc_per_node 1 --nnodes 1 torchrun_main.py \
     --model_config configs/llama_60m.json \
     --seed 42 \
     --lr 0.01 \
     --rank 128 \
     --lora_alpha 0.4 \
     --update_proj_gap 100 \
-    --batch_size 128 \
+    --batch_size 64 \
     --total_batch_size 512 \
     --num_training_steps 10000 \
     --warmup_steps 1000 \
@@ -14,7 +14,7 @@ torchrun --standalone --nproc_per_node 2 --nnodes 1 torchrun_main.py \
     --save_every 1000 \
     --dtype bfloat16 \
     --optimizer adamw \
-    --use_loqt True\
+    --use_loqt True \
     --quantize_w '4bit' \
     --quantize_projection_matrix '4bit' \
     --compensate_quant_error_iterations 5 \

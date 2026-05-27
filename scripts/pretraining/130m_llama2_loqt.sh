@@ -1,12 +1,13 @@
 # --nproc_per_node 2 is number of GPUs per node
-torchrun --standalone --nproc_per_node 2 --nnodes 1 torchrun_main.py \
+# rank default : 256
+torchrun --standalone --nproc_per_node 1 --nnodes 1 torchrun_main.py \
     --model_config configs/llama_130m.json \
     --seed 42 \
     --lr 0.01 \
-    --rank 256 \
+    --rank 16 \
     --lora_alpha 0.5 \
     --update_proj_gap 100 \
-    --batch_size 256 \
+    --batch_size 32 \
     --total_batch_size 512 \
     --num_training_steps 20000 \
     --warmup_steps 2000 \
@@ -14,10 +15,12 @@ torchrun --standalone --nproc_per_node 2 --nnodes 1 torchrun_main.py \
     --save_every 10000 \
     --dtype bfloat16 \
     --optimizer adamw \
-    --use_loqt True\
+    --use_loqt True \
     --quantize_w '4bit' \
     --quantize_projection_matrix '4bit' \
     --compensate_quant_error_iterations 5 \
     --proj_gap_progression "exponential" \
     --increment_size 1.2 \
-    --name 130m_LoQT
+    --name 130m_LoQT_rank_16
+
+

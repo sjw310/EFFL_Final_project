@@ -370,7 +370,7 @@ def main():
         # Downloading and loading a dataset from the hub.
         raw_datasets = load_dataset("glue", args.task_name)
     else:
-        # Loading the dataset from local csv or json file.
+        # Loading the dataset from l(loqt) sjw00310@sjw00310ocal csv or json file.
         data_files = {}
         if args.train_file is not None:
             data_files["train"] = args.train_file
@@ -558,9 +558,9 @@ def main():
             label_to_id = {i: label_name_to_id[label_list[i]] for i in range(num_labels)}
         else:
             logger.warning(
-                "Your model seems to have been trained with labels, but they don't match the dataset: ",
+                f"Your model seems to have been trained with labels, but they don't match the dataset: "
                 f"model labels: {sorted(label_name_to_id.keys())}, dataset labels: {sorted(label_list)}."
-                "\nIgnoring the model labels as a result.",
+                f"\nIgnoring the model labels as a result."
             )
     elif args.task_name is None and not is_regression:
         label_to_id = {v: i for i, v in enumerate(label_list)}

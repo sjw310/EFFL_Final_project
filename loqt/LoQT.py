@@ -120,7 +120,7 @@ class LoQTModel(nn.Module):
             grad_accumulation_steps = self.grad_accumulation_steps
             
         )
-        assert self.grad_accumulation_steps is not None, "grad_accumulation_steps must be specified"
+        #assert self.grad_accumulation_steps is not None, "grad_accumulation_steps must be specified"
         
         self._wrap_target_modules()  # Wrap target modules with LoRA Linear layers
         torch.cuda.empty_cache()
@@ -857,8 +857,11 @@ class LoraLinear(nn.Module):
         if self.quantize_projection_matrix == '4bit':
             if self.proj_type == 'right':
                 self.lora_B = self.dequantize_linear(self.lora_B, self.quantize_projection_matrix, self.bnb_4bit_quant_type, shape=self.lora_B_shape)
+                
             else:
                 self.lora_A = self.dequantize_linear(self.lora_A, self.quantize_projection_matrix, self.bnb_4bit_quant_type, shape=self.lora_A_shape)
+                
+                
         # If no quantization is applied, no changes are needed
     
 
@@ -869,7 +872,9 @@ class LoraLinear(nn.Module):
             # Prepare an empty tensor with the same properties to hold dequantized data
             deq_weights = torch.empty(shape, dtype=self.compute_dtype, device=linear_layer.weight.device)
             # Dequantize directly into the prepared tensor
-            bnb_F.dequantize_4bit(linear_layer.weight, linear_layer.weight.quant_state, out=deq_weights, quant_type=bnb_4bit_quant)
+
+            #bnb_F.dequantize_4bit(linear_layer.weight, linear_layer.weight.quant_state, out=deq_weights, quant_type=bnb_4bit_quant)
+            deq_weights = bnb_F.dequantize_4bit(linear_layer.weight, linear_layer.weight.quant_state, quant_type=bnb_4bit_quant)
             # Replace the weight tensor in the linear layer with the dequantized weights
             linear_layer.weight.data = deq_weights
             return linear_layer

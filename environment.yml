@@ -1,4 +1,4 @@
-name: loqt
+name: extention_loqt
 channels:
   - defaults
 dependencies:

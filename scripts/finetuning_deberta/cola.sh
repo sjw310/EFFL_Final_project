@@ -13,7 +13,8 @@ python run_glue.py \
   --compensate_quant_error_iterations 5 \
   --max_length 256 \
   --pad_to_max_length \
-  --per_device_train_batch_size 32 \
+  --per_device_train_batch_size 16 \
+  --gradient_accumulation_steps 1 \
   --learning_rate 8e-5 \
   --output_dir checkpoints \
   --use_loqt true \
@@ -32,7 +33,7 @@ python run_glue.py \
   --update_proj_gap 2400 \
   --max_length 256 \
   --pad_to_max_length \
-  --per_device_train_batch_size 32 \
+  --per_device_train_batch_size 16\
   --learning_rate 8e-5 \
   --output_dir checkpoints \
   --use_loqt true \
